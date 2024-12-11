@@ -1,0 +1,53 @@
+.piano-container{
+    display:flex;
+    flex-direction: column;
+    .piano-top{
+        display:flex;
+        list-style: none;
+        margin:0px;
+        padding:0px;
+        flex-direction:row;
+        height:30vh;
+        >*{
+            width:calc(200%/28);
+        }
+        #c-top, #e-top,#f-top, #b-top{/*the white notes not in between black notes*/
+            width:calc(300%/28);
+        }
+        .black{
+            background-color:#1b1212;
+            color:ivory;
+        }
+        .white{
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            background-color:ivory;
+            color:ivory;
+        }
+    }
+    .piano-bottom{
+        display:flex;
+        list-style: none;
+        margin:0px;
+        padding:0px;
+        flex-direction:row;
+        height:15vh;
+        >*{
+            width:calc(100%/7);
+            border-bottom: 1px solid black;
+            border-left: 1px solid black;
+            border-right: 1px solid black;
+            background-color:ivory;
+            color:#121212;
+        }
+    }
+    .hovering{
+        &.white{
+            filter:brightness(0.75);
+        }
+        &.black{
+            filter:brightness(1.5);
+        }
+
+    }
+}
