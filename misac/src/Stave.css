@@ -1,0 +1,49 @@
+
+.sheet-container{
+    height:40vh;
+    .stave-container{
+        display:flex;
+        flex-direction:column;
+        padding-top:140px;
+        padding-bottom:70px;
+        height:calc(100% - 140px);
+        .space{
+            height:29px;
+            border-top:1px solid black;
+            &.f{
+                border-bottom:1px solid black;
+            }
+        }
+        .trebleclef{
+            height:180px;/*Bars height 120px, overflow of 60px total*/
+            position:absolute;
+            top:115px;/*padding-top - 25px overflow - puts clef in correct place*/
+        }
+        .minim{
+            height:100px;/*note takes up the whole line space at this size, so proportionality is ~70% height is tail and ~30% is note*/
+            position:absolute;
+            left:400px;
+            &.b{
+                top:115px;/*increment in 15s from 40px + another 75 to get the correct octave*/
+            }
+            &.a{
+                top:130px;
+            }       
+            &.g{
+                top:145px;
+            }      
+            &.f{
+                top:160px;
+            }
+            &.e{
+                top:175px;
+            }
+            &.d{
+                top:190px;
+            }
+            &.c{
+                top:205px;
+            }    
+        }
+    }
+}

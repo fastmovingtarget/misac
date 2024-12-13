@@ -6,11 +6,25 @@ import "./Piano.css";
 *@return A Piano octave element with notes and keys
 *@setNotePress a funtion to set that a note has been pressed, will be passed up and then the pressed note will be passed down to the music notation element
 */
-function Piano({setNotePress}) {
+function Piano({notePressHandler}) {
     const octaveTop = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];// 7 notes in white and 5 half-notes in black. I decided to go with sharp rather than flat simply because the notation is easier to use
     const octaveBottom = ["c", "d", "e", "f", "g", "a", "b"];//7 notes in white
+    const keys = {
+        c:["c", "d", "e", "f", "g", "a", "b"],
+        g:["c", "d", "e", "f#", "g", "a", "b"],
+        d:["c#", "d", "e", "f#", "g", "a", "b"],
+        a:["c#", "d", "e", "f#", "g#", "a", "b"],
+        e:["c#", "d#", "e", "f#", "g#", "a", "b"],
+        b:["c#", "d#", "e", "f#", "g#", "a#", "b"],
+        fsharp:["c#", "d#", "e#", "f#", "g#", "a#", "b"]
+    }
 
     const [hoverNote, setHoverNote] = useState(null)//sets the note that's being hovered over
+    const [pressedNote, setPressedNote] = useState(null)
+
+    const handleNotePress = (pianoKey) => {
+        notePressHandler(pianoKey)
+    }
 
 
     return(
@@ -24,8 +38,12 @@ function Piano({setNotePress}) {
                         className={"upper-note " +
                             pianoKey + 
                             (pianoKey.includes("#") ? " black" : " white") + 
-                            (pianoKey === hoverNote ? " hovering" : "")}
+                            (pianoKey === hoverNote && pianoKey !== pressedNote ? " hovering " : "") + 
+                            (pianoKey === pressedNote ? " pressed" : "")}
                             onMouseEnter={() => setHoverNote(pianoKey)}
+                            onClick={() => handleNotePress(pianoKey)}
+                            onMouseDown={() => setPressedNote(pianoKey)}
+                            onMouseUp={() => setPressedNote(null)}
                         >
                             {pianoKey.toLocaleUpperCase()}
                         </li>
@@ -40,9 +58,13 @@ function Piano({setNotePress}) {
                         key={pianoKey + "-bottom"} 
                         className={
                             "lower-note white " + pianoKey +
-                            (pianoKey === hoverNote ? " hovering" : "")
+                            (pianoKey === hoverNote && pianoKey !== pressedNote ? " hovering" : "")+ 
+                            (pianoKey === pressedNote ? " pressed" : "")
                         }
                         onMouseEnter={() => setHoverNote(pianoKey)}
+                        onClick={() => handleNotePress(pianoKey)}
+                        onMouseDown={() => setPressedNote(pianoKey)}
+                        onMouseUp={() => setPressedNote(null)}
                         >
                             {pianoKey.toLocaleUpperCase()}
                         </li>
