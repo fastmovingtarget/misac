@@ -14,3 +14,13 @@ Initially I did this using flex-grow, but I eventually decided that the borders 
 Because of the split white notes, I wasn't able to implement hovering using purely CSS, so I decided to use the onMouseEnter to set a state which would indicate the note the cursor was over, then give the hovered note a "hovering" class.
 
 Next step: Implement a musical notation bar above the keyboard, then serve random notes for the player to press
+
+## Day 2 - 12/12/2024 - Creating the stave and mapping a note
+
+Implemented music notation bar, using trebleclef and minim imgs sourced from the internet. Managed most of the placement/offset in css by eye, which may require some fiddling with later on.
+
+Next Step: Implement clicks on the piano keys being compared to to the stave and feedback, change note if correct
+
+## Day 4
+
+Note feedback implemented. 

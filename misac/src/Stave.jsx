@@ -11,8 +11,8 @@ function Stave({currentNote}){
                 <div className="c space"></div>
                 <div className="a space"></div>
                 <div className="f space"></div>
-                <img className={"minim " + currentNote} id="minim" src={minim} alt="" />
-                <img className="trebleclef" id="trebleClef" src={trebleclef} alt=""/>
+                <img className={"minim " + currentNote} id="minim" src={minim} alt="minim" />
+                <img className="trebleclef" id="trebleClef" src={trebleclef} alt="trebleclef"/>
             </div>
         </div>
     )
