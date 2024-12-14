@@ -1,4 +1,3 @@
-import {useState} from 'react'
 import "./Stave.css"
 import minim from "./img/minim.png"
 import trebleclef from "./img/trebleclef.png"

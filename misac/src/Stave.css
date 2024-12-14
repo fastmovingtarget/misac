@@ -1,10 +1,12 @@
 
 .sheet-container{
+    --bar-height:30px;
+    --padding-top:140px;
     height:40vh;
     .stave-container{
         display:flex;
         flex-direction:column;
-        padding-top:140px;
+        padding-top:var(--padding-top);
         padding-bottom:70px;
         height:calc(100% - 140px);
         .space{
@@ -15,12 +17,12 @@
             }
         }
         .trebleclef{
-            height:180px;/*Bars height 120px, overflow of 60px total*/
+            height:calc(var(--bar-height) * 6);/*Bars height 120px, overflow of 60px total*/
             position:absolute;
-            top:115px;/*padding-top - 25px overflow - puts clef in correct place*/
+            top:calc(140px - (var(--bar-height) * 3 / 4));/*padding-top - 25px overflow - puts clef in correct place*/
         }
         .minim{
-            height:100px;/*note takes up the whole line space at this size, so proportionality is ~70% height is tail and ~30% is note*/
+            height:calc(var(--bar-height) * 3.5);/*note takes up the whole line space at this size, so proportionality is ~70% height is tail and ~30% is note*/
             position:absolute;
             left:400px;
             &.b{

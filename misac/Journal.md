@@ -23,4 +23,10 @@ Next Step: Implement clicks on the piano keys being compared to to the stave and
 
 ## Day 4
 
-Note feedback implemented. 
+Note feedback implemented. Spent most of the rest of the day researching key signatures and figuring those out in my head. Could have just looked it up and then copied & pasted, but given that a purpose of this app is to help me with that kind of music theory, I'll call it time well spent.
+
+Next Step: Implement key change functionality
+
+## Day 5 - 14/12/2024 - Changing the key signature
+
+Spent today putting my research into action
