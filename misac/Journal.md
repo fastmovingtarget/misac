@@ -29,4 +29,11 @@ Next Step: Implement key change functionality
 
 ## Day 5 - 14/12/2024 - Changing the key signature
 
-Spent today putting my research into action
+Spent today putting my research into action. Changed the key letters that show up based on what key signature has been input, and also App now compares the pressed key based on the key signature rather than defaulting to middle C.
+Then I put in a floating options menu with only one setting (for the moment) to change the key signature manually.
+
+Next Steps: Add Sounds...hopefully.
+
+## Day 6 - 15/12/2024 - Adding in piano Sounds
+
+Downloaded sound files from https://github.com/parisjava/wav-piano-sound (scanned for viruses). 
