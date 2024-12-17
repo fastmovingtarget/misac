@@ -48,3 +48,7 @@ Next Step: Add a score bar
 
 ## Day 7 - 17/12/2024 - Score bar
 
+Slow day, for some reason I was super tired today and ended up not doing as much as I'd have liked. Did manage to implement a score bar (and made the score decay over time, so the game is more than just pressing buttons, it's pressing buttons *quickly*). Does need a more permanant high-score, though, which will be my task for tomorrow.
+
+Next Step: Add a high score to the score bar, add key signature to the stave.
+

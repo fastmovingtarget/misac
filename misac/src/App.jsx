@@ -2,7 +2,8 @@ import {useState} from 'react';
 import './App.css';
 import Piano from "./Piano";
 import Stave from "./Stave";
-import Options from "./Options"
+import Options from "./Options";
+import Score from "./Score";
 
 function App() {   
 
@@ -30,6 +31,7 @@ function App() {
     volume:"0.5",
     numNotes:2
   })
+  const [score, setScore] = useState(0)
   
   const generateNewNoteSet = (numNotes = options.numNotes) => {
     let newNoteSet = [];
@@ -43,6 +45,7 @@ function App() {
     }
     return newNoteSet
   }
+
   const [currentNoteSet, setCurrentNoteSet] = useState(generateNewNoteSet())
 
   const setOptionsHandler = (e) => {
@@ -69,16 +72,21 @@ function App() {
         newNoteSet[currentNoteSetIndex].state = "successful"//set the state to success if the note isn't the last note in the set
         setCurrentNoteSet(newNoteSet)
       }
+      setScore(score + 1000)
     }
     else{//if the wrong note is pressed
       let newNoteSet = [...currentNoteSet];
       newNoteSet[currentNoteSetIndex].state = "unsuccessful"//set the state to unsuccessful instead
       setCurrentNoteSet(newNoteSet)
+      setScore(score - 1000)
     }
   }
 
   return (
     <div className="App">
+      <div>
+        <Score score={score} setScore={setScore}/>
+      </div>
       <Options keys={keys} options={options} setOptionsHandler={setOptionsHandler}/>
       <Stave currentNoteSet={currentNoteSet} numNotes={options.numNotes}/>
       <Piano notePressHandler={notePressHandler} selectedKey={keys[options.key]} volume={options.volume}/>
