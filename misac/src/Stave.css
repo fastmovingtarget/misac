@@ -21,31 +21,73 @@
             position:absolute;
             top:calc(140px - (var(--bar-height) * 3 / 4));/*padding-top - 25px overflow - puts clef in correct place*/
         }
-        .minim{
-            height:calc(var(--bar-height) * 3.5);/*note takes up the whole line space at this size, so proportionality is ~70% height is tail and ~30% is note*/
-            position:absolute;
-            left:400px;
-            &.b{
-                top:115px;/*increment in 15s from 40px + another 75 to get the correct octave*/
+        .note-container{
+            &.minim{
+                height:calc(var(--bar-height) * 3.6);/*note takes up the whole line space at this size, so proportionality is 72.22% height is tail and 27.77% is note*/
+                position:absolute;
+                
+                --note-position:calc(100vh - (var(--padding-top) + 30px));/*calculate using bottom rather than top means that we don't need to worry about note height*/
+                .note-relative{
+                    position:relative;
+                    height:100%;
+                    .minim{
+                        position:absolute;
+                        height:100%;
+                        &.successful{
+                            filter: brightness(0) saturate(100%) invert(24%) sepia(92%) saturate(6531%) hue-rotate(124deg) brightness(96%) contrast(102%);
+                        }
+                        &.unsuccessful{
+                            filter: brightness(0) saturate(100%) invert(24%) sepia(95%) saturate(5655%) hue-rotate(354deg) brightness(93%) contrast(121%);
+                        }
+                    }
+                    div{
+                        position:absolute;
+                        height:calc(var(--bar-height)/2);
+                        width:calc(var(--bar-height) * 1.8);
+                        left:calc(var(--bar-height) * 0.9);
+                        &.bottom-1{
+                            bottom:0px;
+                        }
+                        &.bottom-2{
+                            bottom:calc(var(--bar-height) * -1);
+                        }
+                        &.bottom-3{
+                            bottom:calc(var(--bar-height) * -2);
+                        }
+                        &.bottom-4{
+                            bottom:calc(var(--bar-height) * -3);
+                        }
+                    }
+                }
+                /*padding-top - bar-height*2.6 will put the note in the high E (top space). Add another bar-height/2 for each additional note.*/
+                &.b{
+                    bottom:calc(var(--note-position) - (var(--bar-height) * 1.5));
+                }
+                &.a{
+                    bottom:calc(var(--note-position) - (var(--bar-height) * 2));
+                }       
+                &.g{
+                    bottom:calc(var(--note-position) - (var(--bar-height) * 2.5));
+                }      
+                &.f{
+                    bottom:calc(var(--note-position) - (var(--bar-height) * 3));
+                }
+                &.e{
+                    bottom:calc(var(--note-position) - (var(--bar-height) * 3.5));
+                }
+                &.d{
+                    bottom:calc(var(--note-position) - (var(--bar-height) * 4));
+                    .bottom-1{
+                        border-bottom:1px solid black;
+                    }
+                }
+                &.c{
+                    bottom:calc(var(--note-position) - (var(--bar-height) * 4.5));
+                    .bottom-1{
+                        border-top:1px solid black;
+                    }
+                }    
             }
-            &.a{
-                top:130px;
-            }       
-            &.g{
-                top:145px;
-            }      
-            &.f{
-                top:160px;
-            }
-            &.e{
-                top:175px;
-            }
-            &.d{
-                top:190px;
-            }
-            &.c{
-                top:205px;
-            }    
         }
     }
 }

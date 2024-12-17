@@ -1,19 +1,30 @@
 import { useState } from "react"
-import options from "./img/options.png"
+import optionsImg from "./img/options.png"
 import "./Options.css"
 
-function Options({inputKey, setKey}){
+function Options({keys, options, setOptionsHandler}){
     const [optionsActive, setOptionsActive] = useState(false)
     
-    const keys = ["c", "g", "d", "a", "e", "b", "f#","c#","f","b\u266d","e\u266d","a\u266d","d\u266d","g\u266d","c\u266d"]
+    const handleInput = (e) => {
+        setOptionsHandler(e);
+    }
 
     return(
         <div className={"options-container" + (optionsActive ? " expanded" : " collapsed")}>
-            <img src={options} className="options-image" alt="options" onClick={() => setOptionsActive(!optionsActive)}/>
-            <label className="select-key">Key Signature:
-                <select name="key" id="select-key" className="select-key" onInput={(e) => setKey(e.target.value)} defaultValue={inputKey}>
-                    {keys.map((key, index) => <option key={key + index} value={key} >{key.toLocaleUpperCase()}</option>)}
+            <img src={optionsImg} className="options-image" alt="options" onClick={() => setOptionsActive(!optionsActive)}/>
+            <label className="select-key options-item">Key Signature:
+                <select name="key" id="select-key" className="select-key" onInput={handleInput} defaultValue={options.key}>
+                    {Object.keys(keys).map((key, index) => 
+                        <option className="select-key-option" key={key + index} value={key} >{key.toLocaleUpperCase() + "\u00A0".repeat(4 - key.length) + "| " + keys[key][7]}</option>
+                    )}
                 </select>
+            </label>
+            <label className="select-volume options-item">Volume:
+                <input type="range" name="volume" min="0" max="1" step="0.01" onInput={handleInput}/>
+                {options.volume}
+            </label>
+            <label className="select-num-notes options-item">Number of Notes: 
+                <input type="number" name="numNotes" min="1" max="4" value={options.numNotes} onInput={handleInput}/>
             </label>
         </div>
     )

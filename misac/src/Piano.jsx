@@ -47,7 +47,7 @@ function Piano({notePressHandler, selectedKey, volume}) {
     const octaveTop = isFlat ? octaveTopFlat : octaveTopSharp;//base the top notes on whether isFlat is true
 
     const handleNotePress = (pianoKey) => {
-        notePressHandler(pianoKey);
+        setPressedNote(pianoKey);
         playHooks[octaveTop.indexOf(pianoKey)][0]()
     }
 
@@ -65,12 +65,15 @@ function Piano({notePressHandler, selectedKey, volume}) {
                             (pianoKey === hoverNote && pianoKey !== pressedNote ? " hovering " : "") + 
                             (pianoKey === pressedNote ? " pressed" : "")}
                             onMouseEnter={() => setHoverNote(pianoKey)}
-                            onMouseLeave={() => setHoverNote(null)}
-                            onClick={() => handleNotePress(pianoKey, index)}
-                            onMouseDown={() => setPressedNote(pianoKey)}
+                            onMouseLeave={() => {
+                                setHoverNote(null)
+                                setPressedNote(null)
+                            }}
+                            onClick={() => notePressHandler(pianoKey)}
+                            onMouseDown={() => handleNotePress(pianoKey)}
                             onMouseUp={() => setPressedNote(null)}
                         >
-                            {selectedKey.includes(pianoKey) ? pianoKey.toLocaleUpperCase() : null}
+                            {selectedKey.includes(pianoKey) && (pianoKey.includes("#") || pianoKey.includes("\u266d")) ? pianoKey.toLocaleUpperCase() : null}
                         </li>
                     )
                 })}
@@ -87,9 +90,12 @@ function Piano({notePressHandler, selectedKey, volume}) {
                             (pianoKey === pressedNote ? " pressed" : "")
                         }
                         onMouseEnter={() => setHoverNote(pianoKey)}
-                        onMouseLeave={() => setHoverNote(null)}
-                        onClick={() => handleNotePress(pianoKey, index)}
-                        onMouseDown={() => setPressedNote(pianoKey)}
+                        onMouseLeave={() => {
+                            setHoverNote(null)
+                            setPressedNote(null)
+                        }}
+                        onClick={() => notePressHandler(pianoKey)}
+                        onMouseDown={() => handleNotePress(pianoKey)}
                         onMouseUp={() => setPressedNote(null)}
                         >
                             {selectedKey.includes(pianoKey) ? pianoKey.toLocaleUpperCase() : null}
