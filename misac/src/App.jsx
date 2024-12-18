@@ -31,7 +31,8 @@ function App() {
     volume:"0.5",
     numNotes:2
   })
-  const [score, setScore] = useState(0)
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
   
   const generateNewNoteSet = (numNotes = options.numNotes) => {
     let newNoteSet = [];
@@ -72,7 +73,10 @@ function App() {
         newNoteSet[currentNoteSetIndex].state = "successful"//set the state to success if the note isn't the last note in the set
         setCurrentNoteSet(newNoteSet)
       }
-      setScore(score + 1000)
+      const newScore = score + 1000;
+      setScore(newScore);
+      if(newScore > highScore)
+        setHighScore(newScore)
     }
     else{//if the wrong note is pressed
       let newNoteSet = [...currentNoteSet];
@@ -85,10 +89,10 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Score score={score} setScore={setScore}/>
+        <Score score={score} setScore={setScore} highScore={highScore}/>
       </div>
       <Options keys={keys} options={options} setOptionsHandler={setOptionsHandler}/>
-      <Stave currentNoteSet={currentNoteSet} numNotes={options.numNotes}/>
+      <Stave currentNoteSet={currentNoteSet} numNotes={options.numNotes} keyNotation={keys[options.key][7]}/>
       <Piano notePressHandler={notePressHandler} selectedKey={keys[options.key]} volume={options.volume}/>
     </div>
   );

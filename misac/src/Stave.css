@@ -21,6 +21,29 @@
             position:absolute;
             top:calc(140px - (var(--bar-height) * 3 / 4));/*padding-top - 25px overflow - puts clef in correct place*/
         }
+        .key-notation-container{
+            position:absolute;
+            left:100px;
+            display:flex;
+            flex-direction:row;
+            top:calc(var(--padding-top));
+            >*{
+                margin:0px;
+                font-size:calc(var(--bar-height) * 1.5);
+                font-weight: bolder;
+                &:hover{
+                    cursor:default;
+                }
+            }
+            .key-notation-1{
+                position:relative;
+                top:calc(var(--bar-height) * 1.5);
+            }
+            .key-notation-3{
+                position:relative;
+                top:calc(var(--bar-height) * 1.5);
+            }
+        }
         .note-container{
             &.minim{
                 height:calc(var(--bar-height) * 3.6);/*note takes up the whole line space at this size, so proportionality is 72.22% height is tail and 27.77% is note*/

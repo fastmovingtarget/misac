@@ -52,3 +52,9 @@ Slow day, for some reason I was super tired today and ended up not doing as much
 
 Next Step: Add a high score to the score bar, add key signature to the stave.
 
+## Day 8 - 18/12/2024 - High Score and Key Signature on stave
+
+I'm planning to do a bit of a christmas wind-down starting today, so will be moving more towards just doing the morning coding for a couple of hours. Adding the key signature was successful, I ended up being unable to find good sharp and flat images, so I chose to use utf-16 chars instead. Adding the high score bar was as simple as possible, and I also fixed a bug where the score decay wouldn't affect negative scores (which I did want to happen).
+
+Next Step: Look into adding a second octave
+

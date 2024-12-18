@@ -2,11 +2,9 @@ import "./Stave.css"
 import minim from "./img/minim.png"
 import trebleclef from "./img/trebleclef.png"
 
-function Stave({currentNoteSet, numNotes}){
-    //let noteIcon;
-
+function Stave({currentNoteSet, numNotes, keyNotation}){
     const noteIndent = 400;
-    const noteGap = 1200/numNotes;
+    const noteGap = 2000/numNotes;
 
     return(
         <div className="sheet-container">
@@ -27,9 +25,19 @@ function Stave({currentNoteSet, numNotes}){
                                     <div className="bottom-4"></div>
                                 </div>
                             </div>
-                    )})
+                        )
+                    })
                 }
                 <img className="trebleclef" id="trebleClef" src={trebleclef} alt="trebleclef"/>
+                <div className="key-notation-container">
+                    {
+                        keyNotation.split("").map((element, index) => {
+                            if(element === "\u266e")
+                                return null;
+                            return <p className={element + " key-notation-" + index} key={index + element} id={element}>{element}</p>
+                        })
+                    }
+                </div>
             </div>
         </div>
     )

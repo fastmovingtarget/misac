@@ -19,6 +19,7 @@
         .options-item {
             transition:opacity linear 0.2s 0.3s;
             opacity:1;
+            margin:30px;
         }
     }
     .options-image{

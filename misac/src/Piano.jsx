@@ -17,7 +17,9 @@ import "./Piano.css";
 
 /** Visualisation of a single octave of a piano using coloured list elements 
 *@return A Piano octave element with notes and keys
-*@setNotePress a funtion to set that a note has been pressed, will be passed up and then the pressed note will be passed down to the music notation element
+*@notePressHandler a funtion to set that a note has been pressed, will be passed up and then the pressed note will be passed down to the music notation element
+*@selectedKey passes in the selected key so that the piano element only displays the valid note names
+*@volume passes in the volume for the play hooks
 */
 function Piano({notePressHandler, selectedKey, volume}) {
     const [hoverNote, setHoverNote] = useState(null)//sets the note that's being hovered over
@@ -48,6 +50,7 @@ function Piano({notePressHandler, selectedKey, volume}) {
 
     const handleNotePress = (pianoKey) => {
         setPressedNote(pianoKey);
+        notePressHandler(pianoKey);
         playHooks[octaveTop.indexOf(pianoKey)][0]()
     }
 
@@ -94,7 +97,6 @@ function Piano({notePressHandler, selectedKey, volume}) {
                             setHoverNote(null)
                             setPressedNote(null)
                         }}
-                        onClick={() => notePressHandler(pianoKey)}
                         onMouseDown={() => handleNotePress(pianoKey)}
                         onMouseUp={() => setPressedNote(null)}
                         >

@@ -24,7 +24,7 @@ function Options({keys, options, setOptionsHandler}){
                 {options.volume}
             </label>
             <label className="select-num-notes options-item">Number of Notes: 
-                <input type="number" name="numNotes" min="1" max="4" value={options.numNotes} onInput={handleInput}/>
+                <input type="number" name="numNotes" min="1" max="12" value={options.numNotes} onInput={handleInput}/>
             </label>
         </div>
     )
