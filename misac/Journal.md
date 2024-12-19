@@ -58,3 +58,10 @@ I'm planning to do a bit of a christmas wind-down starting today, so will be mov
 
 Next Step: Look into adding a second octave
 
+## Day [9] - 19/12/2024 - Expanding the note set
+
+Successful day! I was able to source a "full" 88 .mp3 files to give us a1-c#8. From there, I moved the note import to a separate context more for my own sanity, exporting an object that would allow me to programatically select which note to play via its name.
+I added in an octave identifier to the Piano component, then an "octaves" option to the options class, which I would then use to map multiple piano components (probably shouldn't call them "piano" when there's more than one...need a better name).
+From there I added an octave identfier to each note object generated in the App.css class, which passes into the stave, which I then added to the note container css class. I manually created a new set of css selectors for the new octave, moving them up to the correct bar. Convention has higher notes being rotated, so I used css transform to rotate the higher octave notes, then translated them into their correct positions. Lastly I added a dropdown box to select which of the octave options to use (4 or 4 and 5) with 4 starting at middle C.
+
+Next Step: Move High Score and Options to local storage for continuity

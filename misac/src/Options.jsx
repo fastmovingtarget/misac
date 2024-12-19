@@ -26,6 +26,12 @@ function Options({keys, options, setOptionsHandler}){
             <label className="select-num-notes options-item">Number of Notes: 
                 <input type="number" name="numNotes" min="1" max="12" value={options.numNotes} onInput={handleInput}/>
             </label>
+            <label className="select-octave options-item">Octave: 
+                <select name="octaves" id="select-octaves" className="select-octaves" onInput={handleInput} defaultValue={options.octaves}>
+                        <option className="select-octaves-option" value={"[4]"} >4 - middle</option>
+                        <option className="select-octaves-option" value={"[4, 5]"} >4 - middle, 5</option>
+                </select>
+            </label>
         </div>
     )
 }

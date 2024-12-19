@@ -4,16 +4,17 @@ import Piano from "./Piano";
 import Stave from "./Stave";
 import Options from "./Options";
 import Score from "./Score";
+import NoteProvider from './NoteContext';
 
 function App() {   
 
   const keys = {
     "c":["c", "d", "e", "f", "g", "a", "b", "\u266e"],
-    "g":["c", "d", "e", "f#", "g", "a", "b", "\u266F"],
-    "d":["c#", "d", "e", "f#", "g", "a", "b", "\u266F\u266F"],
-    "a":["c#", "d", "e", "f#", "g#", "a", "b", "\u266F\u266F\u266F"],
-    "e":["c#", "d#", "e", "f#", "g#", "a", "b", "\u266F\u266F\u266F\u266F"],
-    "b":["c#", "d#", "e", "f#", "g#", "a#", "b", "\u266F\u266F\u266F\u266F\u266F"],
+    "g":["c", "d", "e", "f\u266f", "g", "a", "b", "\u266F"],
+    "d":["c\u266f", "d", "e", "f\u266f", "g", "a", "b", "\u266F\u266F"],
+    "a":["c\u266f", "d", "e", "f\u266f", "g\u266f", "a", "b", "\u266F\u266F\u266F"],
+    "e":["c\u266f", "d\u266f", "e", "f\u266f", "g\u266f", "a", "b", "\u266F\u266F\u266F\u266F"],
+    "b":["c\u266f", "d\u266f", "e", "f\u266f", "g\u266f", "a\u266f", "b", "\u266F\u266F\u266F\u266F\u266F"],
     /*"f#":["c#", "d#", "f", "f#", "g#", "a#", "b", "6#"],
     "c#":["c#", "d#", "f", "f#", "g#", "a#", "c", "7#"], ok, thinking about these it's absolutely horrible to implement*/
     "f":["c", "d", "e", "f", "g", "a", "b\u266d", "\u266d"],//\u266d is the utf-16 code for the musical flat symbol
@@ -29,18 +30,20 @@ function App() {
   const [options, setOptions] = useState({
     key:"c",
     volume:"0.5",
-    numNotes:2
+    numNotes:2,
+    octaves:"[4, 5]"
   })
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   
-  const generateNewNoteSet = (numNotes = options.numNotes) => {
+  const generateNewNoteSet = (numNotes = options.numNotes, octaves = options.octaves) => {
     let newNoteSet = [];
     for(let i = 0; i < numNotes; i++){
       const noteKeyIndex = Math.floor(Math.random() * 7)
       newNoteSet.push({
         noteKeyIndex,
         note:notes[noteKeyIndex],
+        octave:JSON.parse(octaves)[Math.floor(Math.random() * 2)],
         state:""
       })
     }
@@ -58,6 +61,12 @@ function App() {
     }));
     if(e.target.name === "numNotes")
       setCurrentNoteSet(generateNewNoteSet(value));
+    else if(e.target.name === "octaves")
+    {
+      console.log(value)
+      setCurrentNoteSet(generateNewNoteSet(options.numNotes, value));
+    }
+
   }
 
 
@@ -93,7 +102,15 @@ function App() {
       </div>
       <Options keys={keys} options={options} setOptionsHandler={setOptionsHandler}/>
       <Stave currentNoteSet={currentNoteSet} numNotes={options.numNotes} keyNotation={keys[options.key][7]}/>
-      <Piano notePressHandler={notePressHandler} selectedKey={keys[options.key]} volume={options.volume}/>
+      <NoteProvider>
+        <div className="keyboard-container">
+          {
+            JSON.parse(options.octaves).map((octave) => 
+              <Piano notePressHandler={notePressHandler} selectedKey={keys[options.key]} volume={options.volume} octaveNumber={octave}/>
+            )
+          }
+        </div>
+      </NoteProvider>
     </div>
   );
 }

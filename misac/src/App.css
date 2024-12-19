@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .App-logo {
@@ -38,5 +40,14 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.keyboard-container{
+  display:flex;
+  flex-direction:row;
+  width:100vw;
+  >*{
+    flex-grow:1;
   }
 }

@@ -3,7 +3,7 @@ import minim from "./img/minim.png"
 import trebleclef from "./img/trebleclef.png"
 
 function Stave({currentNoteSet, numNotes, keyNotation}){
-    const noteIndent = 400;
+    const noteIndent = 200;
     const noteGap = 2000/numNotes;
 
     return(
@@ -16,9 +16,10 @@ function Stave({currentNoteSet, numNotes, keyNotation}){
                 {
                     currentNoteSet.map((currentNote, index) => {
                         return (
-                            <div key={index} className={"note-container minim " + currentNote.note} style={{left:noteIndent + (noteGap * index)}} >
+                            <div key={index} className={"note-container minim " + currentNote.note + " octave-" + currentNote.octave} style={{left:noteIndent + (noteGap * index)}} >
                                 <div className="note-relative">
-                                    <img className={"minim " + currentNote.note + " " + currentNote.state} id="minim" src={minim} alt="minim" />
+                                    <img className={"minim " + currentNote.note + " octave-" + currentNote.octave + " " + currentNote.state} id="minim" src={minim} alt="minim" />
+                                    <div className="bottom-0"></div>
                                     <div className="bottom-1"></div>
                                     <div className="bottom-2"></div>
                                     <div className="bottom-3"></div>
