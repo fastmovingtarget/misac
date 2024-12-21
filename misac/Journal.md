@@ -65,3 +65,18 @@ I added in an octave identifier to the Piano component, then an "octaves" option
 From there I added an octave identfier to each note object generated in the App.css class, which passes into the stave, which I then added to the note container css class. I manually created a new set of css selectors for the new octave, moving them up to the correct bar. Convention has higher notes being rotated, so I used css transform to rotate the higher octave notes, then translated them into their correct positions. Lastly I added a dropdown box to select which of the octave options to use (4 or 4 and 5) with 4 starting at middle C.
 
 Next Step: Move High Score and Options to local storage for continuity
+
+## Day 10 - 20/12/2024 - Moving Options and High Score into a React Context
+
+I made a mess of this! The actual process of moving the options into a context was easy enough, but I hadn't considered the impact it would have on the state flow - especially how the note generator would function. I want to keep the note generation working in real time as the octave and number of notes is changed, but I struggled to implement it fully, before realising I'd made messes of other things in the process. I think I'd probably be able to salvage it, but salvage leads to spaghetti. For this reason I decided to reset all the changes I'd made back to the state it was in at the end of Day 9 and come at it with a better plan tomorrow.
+
+## Day 11 - 21/12/2024 - Moving Options and High Score into a React Context but better
+
+Stage 1: Separate App.js into a wrapper component (App.jsx) containing the options context and a controller component (MisacPage.jsx) containing the sub-components and note press logic
+Stage 2: Create an empty Options context to wrap around the MisacPage within App.jsx.
+Stage 3: Add options change logic to Options context, including generateNewNoteSet.
+Stage 4: Start link up the app with Options Context rather than MisacPage's options
+
+That worked a lot better, the app now functioning as it did before, but with consolidated options. Hurrah!
+
+Next Step: Save and load options and high score to local storage

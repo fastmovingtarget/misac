@@ -2,18 +2,21 @@
 import {useState} from 'react'
 import useSound from "use-sound"
 import {useNotes} from './NoteContext';
+import { useOptions } from './OptionsContext';
 import "./Piano.css";
 
 /** Visualisation of a single octave of a piano using coloured list elements 
 *@return A Piano octave element with notes and keys
 *@notePressHandler a funtion to set that a note has been pressed, will be passed up and then the pressed note will be passed down to the music notation element
-*@selectedKey passes in the selected key so that the piano element only displays the valid note names
-*@volume passes in the volume for the play hooks
+*@octaveNumber int, the number of the octave (according to scientific note notation), with middle C being C4
 */
-function Piano({notePressHandler, selectedKey, volume, octaveNumber}) {
+function Piano({notePressHandler, octaveNumber}) {
     const [hoverNote, setHoverNote] = useState(null)//sets the note that's being hovered over
     const [pressedNote, setPressedNote] = useState(null)
     const noteContext = useNotes();
+    const {volume, keys, key} = useOptions();
+
+    const selectedKey = keys[key];
 
 
     const isFlat = selectedKey[7].includes("\u266d")//check to see whether the key signature is flat or sharp

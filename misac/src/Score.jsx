@@ -1,6 +1,8 @@
-import {useState, useEffect} from "react"
+import { useEffect } from "react"
+import { useOptions } from "./OptionsContext";
 
-function Score({score, setScore, highScore}){
+function Score({score, setScore}){
+    const {highScore} = useOptions();
 
     useEffect(() => {
         const timeoutId = setTimeout(() => {
