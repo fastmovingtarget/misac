@@ -67,7 +67,6 @@ function Piano({notePressHandler, octaveNumber}) {
                                 setHoverNote(null)
                                 setPressedNote(null)
                             }}
-                            onClick={() => notePressHandler(pianoKey)}
                             onMouseDown={() => handleNotePress(pianoKey)}
                             onMouseUp={() => setPressedNote(null)}
                         >

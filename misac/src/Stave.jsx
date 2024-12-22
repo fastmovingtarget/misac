@@ -39,7 +39,8 @@ function Stave(){
                         keys[key][7].split("").map((element, index) => {
                             if(element === "\u266e")
                                 return null;
-                            return <p className={element + " key-notation-" + index} key={index + element} id={element}>{element}</p>
+
+                            return <p className={element + " key-notation-" + index} key={index + element} id={element + "-" + index}>{element}</p>
                         })
                     }
                 </div>

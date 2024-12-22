@@ -79,4 +79,14 @@ Stage 4: Start link up the app with Options Context rather than MisacPage's opti
 
 That worked a lot better, the app now functioning as it did before, but with consolidated options. Hurrah!
 
-Next Step: Save and load options and high score to local storage
+Next Step: Save and load options and high score to local storage, but actually this time
+
+## Day 11 - 22/12/2024 - Local Storage
+
+Done. Interacting with local storage is super simple and I should probably do it more...
+
+One thing I'd like to do is make each high score item apply to a specific option set, but how to do that is a *lot* trickier than this initial save state.
+
+I also did some minor fixes to positions on the ledger lines and key signature notation. Turns out each sharp/flat in the key signature should be on the line of the note that's being sharpened/flattened. Who knew? (not me, clearly)
+
+Next Step: Keybinds!

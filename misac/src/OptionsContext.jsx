@@ -21,14 +21,18 @@ const keys = {
 }
 
 function OptionsProvider({children}) {
-    const [options, setOptions] = useState({
+
+    const optionsSave = JSON.parse(localStorage.getItem("misacOptions"))
+    const scoreSave = localStorage.getItem("misacScore")
+
+    const [options, setOptions] = useState(optionsSave ?? {
         key:"c",
         volume:"0.5",
         numNotes:2,
         octaves:"[4, 5]"
     })
 
-    const [highScore, setHighScore] = useState(0)
+    const [highScore, setHighScore] = useState(scoreSave ?? 0)
     
     const notes = ["c", "d", "e", "f", "g", "a", "b"];
 
@@ -51,10 +55,13 @@ function OptionsProvider({children}) {
     const setOptionsHandler = (e) => {
         const { name, value } = e.target;
 
-        setOptions((previousInput) => ({
-            ...previousInput,
+        const newOptions = {
+            ...options,
             [name]:value
-        }));
+        }
+
+        setOptions(newOptions);
+        localStorage.setItem("misacOptions", JSON.stringify(newOptions))
         if(e.target.name === "numNotes"){
             setCurrentNoteSet(generateNewNoteSet(value));
         }
@@ -63,8 +70,13 @@ function OptionsProvider({children}) {
         }
     }
 
+    const setHighScoreWrapper = (highScore) => {
+        localStorage.setItem("misacScore", highScore)
+        setHighScore(highScore);
+    }
+
     return (
-        <OptionsContext.Provider value={{...options, setOptionsHandler, currentNoteSet, setCurrentNoteSet, generateNewNoteSet, keys, highScore, setHighScore}}>
+        <OptionsContext.Provider value={{...options, setOptionsHandler, currentNoteSet, setCurrentNoteSet, generateNewNoteSet, keys, highScore, setHighScore:setHighScoreWrapper}}>
             {children}
         </OptionsContext.Provider>
     )
