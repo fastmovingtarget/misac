@@ -6,8 +6,8 @@ import trebleclef from "./img/trebleclef.png"
 function Stave(){
     const {numNotes, key, currentNoteSet, keys} = useOptions();
 
-    const noteIndent = 200;
-    const noteGap = 2000/numNotes;
+    const noteIndent = 300;
+    const noteGap = 1800/numNotes;
 
 
     return(
