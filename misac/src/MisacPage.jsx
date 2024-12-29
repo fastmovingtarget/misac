@@ -7,6 +7,11 @@ import Score from "./Score";
 import NoteProvider from './NoteContext';
 import {useOptions} from "./OptionsContext"
 
+/**
+ * 
+ * @returns React Component: Page controlling the stave, score, options and keyboard
+ * */
+
 function MisacPage() {   
   const [score, setScore] = useState(0);
 

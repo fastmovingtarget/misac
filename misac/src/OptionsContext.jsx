@@ -22,6 +22,33 @@ const keys = {
 
 function OptionsProvider({children}) {
 
+    const [keyBinds, setKeyBinds] = useState({
+        "Tab":   {note:"c", octave:4}, 
+        "Digit1":{note:"c\u266f", octave:4},
+        "KeyQ":  {note:"d", octave:4},  
+        "Digit2":{note:"d\u266f", octave:4}, 
+        "KeyW":  {note:"e", octave:4}, 
+        "KeyE":  {note:"f", octave:4}, 
+        "Digit4":{note:"f\u266f", octave:4}, 
+        "KeyR":  {note:"g", octave:4}, 
+        "Digit5":{note:"g\u266f", octave:4}, 
+        "KeyT":  {note:"a", octave:4}, 
+        "Digit6":{note:"a\u266f", octave:4}, 
+        "KeyY":  {note:"b", octave:4},
+        "KeyU":  {note:"c", octave:5}, 
+        "Digit8":{note:"c\u266f", octave:5},
+        "KeyI":  {note:"d", octave:5}, 
+        "Digit9":{note:"d\u266f", octave:5},
+        "KeyO":  {note:"e", octave:5}, 
+        "KeyP":  {note:"f", octave:5}, 
+        "Minus": {note:"f\u266f", octave:5},
+        "BracketLeft": {note:"g", octave:5}, 
+        "Equals":      {note:"g\u266f", octave:5}, 
+        "BracketRight":{note:"a", octave:5}, 
+        "Backspace":   {note:"a\u266f", octave:5}, 
+        "Enter":       {note:"b", octave:5}
+    })
+
     const optionsSave = JSON.parse(localStorage.getItem("misacOptions"))
     const scoreSave = localStorage.getItem("misacScore")
 
@@ -76,7 +103,7 @@ function OptionsProvider({children}) {
     }
 
     return (
-        <OptionsContext.Provider value={{...options, setOptionsHandler, currentNoteSet, setCurrentNoteSet, generateNewNoteSet, keys, highScore, setHighScore:setHighScoreWrapper}}>
+        <OptionsContext.Provider value={{...options, setOptionsHandler, currentNoteSet, setCurrentNoteSet, generateNewNoteSet, keys, highScore, setHighScore:setHighScoreWrapper, keyBinds, setKeyBinds}}>
             {children}
         </OptionsContext.Provider>
     )

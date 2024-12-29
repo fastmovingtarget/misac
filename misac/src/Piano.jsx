@@ -1,5 +1,5 @@
 /* Created 11/12/2024 */
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import useSound from "use-sound"
 import {useNotes} from './NoteContext';
 import { useOptions } from './OptionsContext';
@@ -14,7 +14,9 @@ function Piano({notePressHandler, octaveNumber}) {
     const [hoverNote, setHoverNote] = useState(null)//sets the note that's being hovered over
     const [pressedNote, setPressedNote] = useState(null)
     const noteContext = useNotes();
-    const {volume, keys, key} = useOptions();
+    const {volume, keys, key, keyBinds} = useOptions();
+
+    const currentPressedNote = useRef(null)
 
     const selectedKey = keys[key];
 
@@ -42,10 +44,45 @@ function Piano({notePressHandler, octaveNumber}) {
     ];
 
     const handleNotePress = (pianoKey) => {
-        setPressedNote(pianoKey,);
+        setPressedNote(pianoKey);
         notePressHandler(pianoKey, octaveNumber);
+        //console.log(octaveTop.indexOf(pianoKey))
+        try{
         playHooks[octaveTop.indexOf(pianoKey)][0]()
+
+        }
+        catch(err){
+console.log("error!")
+        }
     }
+
+    const handleKeyboardPress = (e) => {
+        if(Object.keys(keyBinds).includes(e.code))//only want to prevent default if we're overriding that key with a key bind
+            e.preventDefault()
+        //if(currentPressedNote.current)//we set the current note lower down: we don't want multiple note sounds being played at once
+        if(e.repeat)
+            return;
+
+
+        const keyboardNote = keyBinds[e.code];
+        
+        if(keyboardNote?.octave === octaveNumber){
+        console.log(e === currentPressedNote.current)
+        //console.log(e)
+            currentPressedNote.current = e
+           // for(let i = 0; i < 5000; i++ )
+                handleNotePress(keyboardNote.note)
+        }
+    }
+
+    const handleKeyboardUp = (e) => {
+        e.preventDefault();
+        currentPressedNote.current = null
+        setPressedNote(null)
+    }
+
+    document.addEventListener("keydown", handleKeyboardPress);
+    document.addEventListener("keyup", handleKeyboardUp);
 
     return(
         <div className="piano-container">

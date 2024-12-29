@@ -1,6 +1,12 @@
 import { useEffect } from "react"
 import { useOptions } from "./OptionsContext";
 
+/**
+ * 
+ * @param {*} param0 
+ * @returns 
+ */
+
 function Score({score, setScore}){
     const {highScore} = useOptions();
 
