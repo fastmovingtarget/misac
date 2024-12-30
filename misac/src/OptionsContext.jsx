@@ -1,4 +1,5 @@
 import {useContext, createContext, useState} from "react"
+import Notes from "./Notes"
 
 const OptionsContext = createContext()
 
@@ -24,7 +25,7 @@ function OptionsProvider({children}) {
 
     const [keyBinds, setKeyBinds] = useState({
         "Tab":   {note:"c", octave:4}, 
-        "Digit1":{note:"c\u266f", octave:4},
+        "Digit1":{note:"c\u266f", octave:4},    
         "KeyQ":  {note:"d", octave:4},  
         "Digit2":{note:"d\u266f", octave:4}, 
         "KeyW":  {note:"e", octave:4}, 
@@ -43,7 +44,7 @@ function OptionsProvider({children}) {
         "KeyP":  {note:"f", octave:5}, 
         "Minus": {note:"f\u266f", octave:5},
         "BracketLeft": {note:"g", octave:5}, 
-        "Equals":      {note:"g\u266f", octave:5}, 
+        "Equal":      {note:"g\u266f", octave:5}, 
         "BracketRight":{note:"a", octave:5}, 
         "Backspace":   {note:"a\u266f", octave:5}, 
         "Enter":       {note:"b", octave:5}
@@ -102,8 +103,10 @@ function OptionsProvider({children}) {
         setHighScore(highScore);
     }
 
+    const {playHooks} = Notes(options.volume);
+
     return (
-        <OptionsContext.Provider value={{...options, setOptionsHandler, currentNoteSet, setCurrentNoteSet, generateNewNoteSet, keys, highScore, setHighScore:setHighScoreWrapper, keyBinds, setKeyBinds}}>
+        <OptionsContext.Provider value={{...options, setOptionsHandler, currentNoteSet, setCurrentNoteSet, generateNewNoteSet, keys, highScore, setHighScore:setHighScoreWrapper, keyBinds, setKeyBinds, playHooks}}>
             {children}
         </OptionsContext.Provider>
     )

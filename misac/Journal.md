@@ -95,7 +95,18 @@ Next Step: Keybinds!
 
 Encountered some trouble here. Adding in some hardcoded keybinds was easy enough and I was able to make them work in fairly short order except for some weird interactions:
     1: Each time a key is pressed, the number of times the keydown event listener is called increases exponentially, including the sound, making a terrible racket from the second button press onwards. I solved this by adding in a "currently pressed note" variable that would be assigned on the first call of keyDown and then unassigned when key went up, then checking to see if it was already assigned before proceeding with the callback. Worked...except for:
-    2: When the listener is only callback'd once, it ceases to play properly despite doing everything else. So the sound only plays if there's a bunch of keyboard events calling it. So I tried calling the sound multiple times within a single event call, to no avail.
-    Tried calling the sound within a setTimeout function...nothing. Quite stumped on what could be causing this, honestly, so leaving it for today and coming back tomorrow.
+    2: When the listener is only callback'd once, it ceases to play properly despite doing everything else. So the sound only plays if there's a bunch of keyboard events calling it. 
+    So I tried calling the sound multiple times within a single event call, to no avail.
+    Tried calling the sound within a setTimeout function...nothing. 
+    Quite stumped on what could be causing this, honestly, so leaving it for today and coming back tomorrow.
 
 Next Step: Find out what's causing the bug - try calling the event from elsewhere in the application
+
+## Day 13 - 30/12/2024 - Fixing Keybinds
+
+Success! All I needed to do was restructure the entire program :D.  I don't necessarily count it as a fix, but an alternative implementation. What I ended up doing was moving the entire note playback handling to the main Misac container. I also chose to move the play hook creation into the NoteContext...then struggled to get nested context to work, so I made it into an import for OptionsContext instead.
+
+The handling in misac uses a keydown listener on the highest level container (so the entire app), but it still wasn't triggering because without a tab index the div isn't focussable so won't register the key events. So I also had to set a tabIndex={0} as well.
+And now it works and nothing else could possibly go wrong...
+
+Next Step: Add an option to map the keybinds
