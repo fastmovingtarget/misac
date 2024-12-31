@@ -1,7 +1,18 @@
 
+@media screen and (min-width: 450px) and (max-width:1650px) {
+    .sheet-container{
+        --bar-height:20px;
+    }
+}
+
+@media screen and (min-width: 1651px){
+    .sheet-container{
+        --bar-height:30px;
+    }
+}
+
 .sheet-container{
-    --bar-height:30px;
-    --padding-top:140px;
+    --padding-top:210px;
     height:50vh;
     width:100vw;
     overflow-x: hidden;
@@ -12,24 +23,30 @@
         padding-top:var(--padding-top);
         padding-bottom:70px;
         height:calc(100% - 140px);
+        overflow:hidden;
         .space{
-            height:29px;
+            height:calc(var(--bar-height) - 1px);
             border-top:1px solid black;
             &.f{
                 border-bottom:1px solid black;
             }
         }
+    }
+    .notes-container{
+        position:absolute;
+        top:var(--padding-top);   
+        height:calc(var(--bar-height) * 4);
         .trebleclef{
             height:calc(var(--bar-height) * 6);/*Bars height 120px, overflow of 60px total*/
-            position:absolute;
-            top:calc(140px - (var(--bar-height) * 3 / 4));/*padding-top - 25px overflow - puts clef in correct place*/
+            top:calc((var(--bar-height) * -3 / 4));/*padding-top - 25px overflow - puts clef in correct place*/
+            position:relative;
         }
         .key-notation-container{
-            position:absolute;
-            left:100px;
+            position:relative;
             display:flex;
             flex-direction:row;
-            top:calc(var(--padding-top));
+            margin:0px 10px;
+            width:calc(var(--bar-height) * 5);
             >*{
                 position:relative;
                 margin:0px;
@@ -76,97 +93,93 @@
         }
         .note-container{
             &.minim{
-                height:calc(var(--bar-height) * 3.6);/*note takes up the whole line space at this size, so proportionality is 72.22% height is tail and 27.77% is note*/
-                position:absolute;
+                --note-height:calc(var(--bar-height) * 3.6);
+                height:var(--note-height);/*note takes up the whole line space at this size, so proportionality is 72.22% height is tail and 27.77% is note*/
+                position:relative;
                 
-                --note-position:calc(100vh - (var(--padding-top) + 30px));/*calculate using bottom rather than top means that we don't need to worry about note height*/
-                .note-relative{
+                .minim{
                     position:relative;
                     height:100%;
-                    .minim{
-                        position:absolute;
-                        height:100%;
-                        &.successful{
-                            filter: brightness(0) saturate(100%) invert(24%) sepia(92%) saturate(6531%) hue-rotate(124deg) brightness(96%) contrast(102%);
-                        }
-                        &.unsuccessful{
-                            filter: brightness(0) saturate(100%) invert(24%) sepia(95%) saturate(5655%) hue-rotate(354deg) brightness(93%) contrast(121%);
-                        }
+                    &.successful{
+                        filter: brightness(0) saturate(100%) invert(24%) sepia(92%) saturate(6531%) hue-rotate(124deg) brightness(96%) contrast(102%);
                     }
-                    div{
-                        position:absolute;
-                        height:calc(var(--bar-height)/2);
-                        width:calc(var(--bar-height) * 1.8);
-                        left:calc(var(--bar-height) * 0.9);
-                        &.bottom-0{
-                            bottom:calc(var(--bar-height) * 1);
-                        }
-                        &.bottom-1{
-                            bottom:0px;
-                        }
-                        &.bottom-2{
-                            bottom:calc(var(--bar-height) * -1);
-                        }
-                        &.bottom-3{
-                            bottom:calc(var(--bar-height) * -2);
-                        }
-                        &.bottom-4{
-                            bottom:calc(var(--bar-height) * -3);
-                        }
+                    &.unsuccessful{
+                        filter: brightness(0) saturate(100%) invert(24%) sepia(95%) saturate(5655%) hue-rotate(354deg) brightness(93%) contrast(121%);
+                    }
+                }
+                div{
+                    position:absolute;
+                    height:calc(var(--bar-height)/2);
+                    width:calc(var(--bar-height) * 1.8);
+                    left:calc(var(--bar-height) * 0.9);
+                    &.bottom-0{
+                        bottom:calc(var(--bar-height) * 1);
+                    }
+                    &.bottom-1{
+                        bottom:0px;
+                    }
+                    &.bottom-2{
+                        bottom:calc(var(--bar-height) * -1);
+                    }
+                    &.bottom-3{
+                        bottom:calc(var(--bar-height) * -2);
+                    }
+                    &.bottom-4{
+                        bottom:calc(var(--bar-height) * -3);
                     }
                 }
                 &.octave-5{
-                    transform:rotate(180deg) translate(calc(var(--bar-height) * -3.6));
+                    transform:rotate(180deg);
                 }
                 /*padding-top - bar-height*2.6 will put the note in the high E (top space). Add another bar-height/2 for each additional note.*/
                 &.b.octave-5{
-                    top:calc(var(--padding-top) + (var(--bar-height) * -2));
+                    top:calc((var(--bar-height) * -2));
                     .bottom-0{
                         border-bottom:1px solid black;
                     }
                 }
                 &.a.octave-5{
-                    top:calc(var(--padding-top) + (var(--bar-height) * -1.5));
+                    top:calc((var(--bar-height) * -1.5));
                     .bottom-1{
                         border-top:1px solid black;
                     }
                 }       
                 &.g.octave-5{
-                    top:calc(var(--padding-top) + (var(--bar-height) * -1));
+                    top:calc((var(--bar-height) * -1));
                 }      
                 &.f.octave-5{
-                    top:calc(var(--padding-top) + (var(--bar-height) * -0.5));
+                    top:calc((var(--bar-height) * -0.5));
                 }
                 &.e.octave-5{
-                    top:calc(var(--padding-top) + (var(--bar-height) * 0));
+                    top:calc((var(--bar-height) * 0));
                 }
                 &.d.octave-5{
-                    top:calc(var(--padding-top) + (var(--bar-height) * 0.5));
+                    top:calc((var(--bar-height) * 0.5));
                 }
                 &.c.octave-5{
-                    top:calc(var(--padding-top) + (var(--bar-height) * 1));
+                    top:calc((var(--bar-height) * 1));
                 }   
                 /*padding-top - bar-height*2.6 will put the note in the high E (top space). Add another bar-height/2 for each additional note.*/
                 &.b.octave-4{
-                    bottom:calc(var(--note-position) - (var(--bar-height) * 1.5));
+                    bottom:calc(var(--note-height) - var(--bar-height) * 2.5);
                 }
                 &.a.octave-4{
-                    bottom:calc(var(--note-position) - (var(--bar-height) * 2));
+                    bottom:calc(var(--note-height) - var(--bar-height) * 3);
                 }       
                 &.g.octave-4{
-                    bottom:calc(var(--note-position) - (var(--bar-height) * 2.5));
+                    bottom:calc(var(--note-height) - var(--bar-height) * 3.5);
                 }      
                 &.f.octave-4{
-                    bottom:calc(var(--note-position) - (var(--bar-height) * 3));
+                    bottom:calc(var(--note-height) - var(--bar-height) * 4);
                 }
                 &.e.octave-4{
-                    bottom:calc(var(--note-position) - (var(--bar-height) * 3.5));
+                    bottom:calc(var(--note-height) - var(--bar-height) * 4.5);
                 }
                 &.d.octave-4{
-                    bottom:calc(var(--note-position) - (var(--bar-height) * 4));
+                    bottom:calc(var(--note-height) - var(--bar-height) * 5);
                 }
                 &.c.octave-4{
-                    bottom:calc(var(--note-position) - (var(--bar-height) * 4.5));
+                    bottom:calc(var(--note-height) - var(--bar-height) * 5.5);
                     .bottom-1{
                         border-top:1px solid black;
                     }

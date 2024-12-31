@@ -1,5 +1,6 @@
-import {useState, useRef} from 'react';
+import {useState} from 'react';
 import './App.css';
+import "./MisacPage.css";
 import Piano from "./Piano";
 import Stave from "./Stave";
 import Options from "./Options";
@@ -14,6 +15,7 @@ import {useOptions} from "./OptionsContext"
 function MisacPage() {   
   const [score, setScore] = useState(0);
   const [currentPressedNote, setCurrentPressedNote] = useState(null);
+  const [optionsActive, setOptionsActive] = useState(false)
 
   const {currentNoteSet, setCurrentNoteSet, keys, key, generateNewNoteSet, octaves, setHighScore, highScore, playHooks, keyBinds} = useOptions()
   
@@ -46,6 +48,9 @@ function MisacPage() {
     }
 
   const keyPressHandler = (e) => {
+    if(optionsActive)
+      return
+
     const code = e.code;
     console.log(e)
     if(e.repeat || !Object.keys(keyBinds).includes(code))
@@ -74,7 +79,7 @@ function MisacPage() {
       <div>
         <Score score={score} setScore={setScore}/>
       </div>
-      <Options />
+      <Options optionsActive={optionsActive} setOptionsActive={setOptionsActive}/>
       <Stave/>
         <div className="keyboard-container">
           {

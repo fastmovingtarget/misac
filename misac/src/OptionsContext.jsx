@@ -23,7 +23,7 @@ const keys = {
 
 function OptionsProvider({children}) {
 
-    const [keyBinds, setKeyBinds] = useState({
+    const [keyBinds, setKeyBinds] = useState(JSON.parse(localStorage.getItem("misacKeyBinds")) ?? {
         "Tab":   {note:"c", octave:4}, 
         "Digit1":{note:"c\u266f", octave:4},    
         "KeyQ":  {note:"d", octave:4},  
@@ -102,11 +102,15 @@ function OptionsProvider({children}) {
         localStorage.setItem("misacScore", highScore)
         setHighScore(highScore);
     }
+    const setKeyBindsWrapper = (keyBinds) => {
+        localStorage.setItem("misacKeyBinds", JSON.stringify(keyBinds))
+        setKeyBinds(keyBinds)
+    }
 
     const {playHooks} = Notes(options.volume);
 
     return (
-        <OptionsContext.Provider value={{...options, setOptionsHandler, currentNoteSet, setCurrentNoteSet, generateNewNoteSet, keys, highScore, setHighScore:setHighScoreWrapper, keyBinds, setKeyBinds, playHooks}}>
+        <OptionsContext.Provider value={{...options, setOptionsHandler, currentNoteSet, setCurrentNoteSet, generateNewNoteSet, keys, highScore, setHighScore:setHighScoreWrapper, keyBinds, setKeyBinds:setKeyBindsWrapper, playHooks}}>
             {children}
         </OptionsContext.Provider>
     )

@@ -110,3 +110,9 @@ The handling in misac uses a keydown listener on the highest level container (so
 And now it works and nothing else could possibly go wrong...
 
 Next Step: Add an option to map the keybinds
+
+## Day 14 - 30/12/2024 - Mapping Keybinds
+
+Mapping keybinds was always going to be slightly awkward with how I implemented the keybinds - with the key(haha) as the key and the note as the value within an object. I chose to do this to make the listener more intuitive, but it meant that I'd struggle to implement the actual user mapping in an intuitive way. I ended up doing it via some quite convoluted methods (see code for more details I guess) but it actually worked out quite well. I also moved the "optionsActive" state up to misacPage so that I could disable the music key event listeners when the options were active - I'd encountered an issue where the key binds would override the options' number of notes number input.
+
+Next Step: Look at styling for mobile. Fun Fun!
