@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/misac/static/css/main.18a12f40.css",
+    "main.css": "/misac/static/css/main.9294a8c9.css",
     "main.js": "/misac/static/js/main.ea58f48f.js",
     "static/js/885.cb09fa29.chunk.js": "/misac/static/js/885.cb09fa29.chunk.js",
     "static/media/trebleclef.png": "/misac/static/media/trebleclef.81f0d21b9f24e19fde7c.png",
@@ -89,12 +89,12 @@
     "static/media/Gb6.mp3": "/misac/static/media/Gb6.b1cdfb6f5c7206354242.mp3",
     "static/media/Gb7.mp3": "/misac/static/media/Gb7.0e0d2c634574a6f84284.mp3",
     "index.html": "/misac/index.html",
-    "main.18a12f40.css.map": "/misac/static/css/main.18a12f40.css.map",
+    "main.9294a8c9.css.map": "/misac/static/css/main.9294a8c9.css.map",
     "main.ea58f48f.js.map": "/misac/static/js/main.ea58f48f.js.map",
     "885.cb09fa29.chunk.js.map": "/misac/static/js/885.cb09fa29.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.18a12f40.css",
+    "static/css/main.9294a8c9.css",
     "static/js/main.ea58f48f.js"
   ]
 }
