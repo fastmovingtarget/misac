@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/misac/static/css/main.cef72a8a.css",
-    "main.js": "/misac/static/js/main.ea58f48f.js",
+    "main.css": "/misac/static/css/main.9f6e752b.css",
+    "main.js": "/misac/static/js/main.58bc1045.js",
     "static/js/885.cb09fa29.chunk.js": "/misac/static/js/885.cb09fa29.chunk.js",
     "static/media/trebleclef.png": "/misac/static/media/trebleclef.81f0d21b9f24e19fde7c.png",
     "static/media/A1.mp3": "/misac/static/media/A1.da4309272c94bb91ae54.mp3",
@@ -89,12 +89,12 @@
     "static/media/Gb6.mp3": "/misac/static/media/Gb6.b1cdfb6f5c7206354242.mp3",
     "static/media/Gb7.mp3": "/misac/static/media/Gb7.0e0d2c634574a6f84284.mp3",
     "index.html": "/misac/index.html",
-    "main.cef72a8a.css.map": "/misac/static/css/main.cef72a8a.css.map",
-    "main.ea58f48f.js.map": "/misac/static/js/main.ea58f48f.js.map",
+    "main.9f6e752b.css.map": "/misac/static/css/main.9f6e752b.css.map",
+    "main.58bc1045.js.map": "/misac/static/js/main.58bc1045.js.map",
     "885.cb09fa29.chunk.js.map": "/misac/static/js/885.cb09fa29.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.cef72a8a.css",
-    "static/js/main.ea58f48f.js"
+    "static/css/main.9f6e752b.css",
+    "static/js/main.58bc1045.js"
   ]
 }
