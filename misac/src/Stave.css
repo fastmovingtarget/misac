@@ -160,7 +160,7 @@
                 }
                 /*padding-top - bar-height*2.6 will put the note in the high E (top space). Add another bar-height/2 for each additional note.*/
                 &.octave-5{
-                    top:calc((var(--bar-height) * -2));
+                    bottom:calc((var(--bar-height) * -2));
                 }
                 /*&.b.octave-5{
                     top:calc((var(--bar-height) * -2));
