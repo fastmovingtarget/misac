@@ -5,7 +5,14 @@
     flex-direction:column;
     transition: height linear 0.3s, width linear 0.3s;
     &.collapsed{
-        width:150px;
+        @media screen and (orientation:landscape){
+            width:10vh;
+            height:10vh;
+        }
+        @media screen and (orientation:portrait){
+            height:10vw;
+            width:10vw;
+        }
         .options-item{
             opacity:0;
         }
@@ -24,6 +31,9 @@
                 margin:0px 10px 0px 10px;
             }
             .keybinds-container{
+                @media (pointer:coarse){
+                    display:none;
+                }
                 margin:10px;
                 .keybind-octave-container{
                     margin:20px 0px;
@@ -48,9 +58,16 @@
         }
     }
     .options-image{
-        height:100px;
-        width:100px;
-        padding:20px;
+        @media screen and (orientation:landscape){
+            width:8vh;
+            height:8vh;
+            padding:1vh;
+        }
+        @media screen and (orientation:portrait){
+            width:8vw;
+            height:8vw;
+            padding:1vw;
+        }
         &:hover{
             background-color: #c0c0c0;
         }

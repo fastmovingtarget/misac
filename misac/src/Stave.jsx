@@ -31,11 +31,11 @@ function Stave(){
                         return (
                             <div key={index} className={"note-container minim " + currentNote.note + " octave-" + currentNote.octave} >
                                 <img className={"minim " + currentNote.note + " octave-" + currentNote.octave + " " + currentNote.state} id="minim" src={minim} alt="minim" />
-                                <div className="bottom-0"></div>
-                                <div className="bottom-1"></div>
-                                <div className="bottom-2"></div>
-                                <div className="bottom-3"></div>
-                                <div className="bottom-4"></div>
+                                <div className="ledger-line-0"></div>
+                                <div className="ledger-line-1"></div>
+                                <div className="ledger-line-2"></div>
+                                <div className="ledger-line-3"></div>
+                                <div className="ledger-line-4"></div>
                             </div>
                         )
                     })

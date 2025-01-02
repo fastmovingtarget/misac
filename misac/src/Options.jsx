@@ -59,17 +59,18 @@ function Options({optionsActive, setOptionsActive}){
                     {
                         bindNotes.map((octaveBindArray) => {
                             return (
-                                <div className="row keybind-octave-container">
+                                <div className="row keybind-octave-container"> 
                                     {
                                         octaveBindArray.map((note, index) => {
                                             return (
-                                                <label className={"column keybind-label" + (note.includes("\u266f") || note.includes("\u266d") ? " black" : " white") }>{note}
+                                                <label key={"keybind-" + index}className={"column keybind-label" + (note.includes("\u266f") || note.includes("\u266d") ? " black" : " white") }>{note}
                                                     <input 
                                                         type="text" 
                                                         name={note}
                                                         value={Object.keys(keyBinds).find(key => (keyBinds[key].note + keyBinds[key].octave) === octaveSharp[index] + note.charAt(note.length - 1)) ?? ""} 
                                                         onKeyUp={keybindInputHandler}
                                                         onKeyDown={e => e.preventDefault()}
+                                                        readOnly
                                                     />
                                                 </label>
                                             )

@@ -34,6 +34,7 @@
     }
     .notes-container{
         position:absolute;
+        width:100%;
         top:var(--padding-top);   
         height:calc(var(--bar-height) * 4);
         .trebleclef{
@@ -92,10 +93,13 @@
             }
         }
         .note-container{
+            flex:1 1 auto;
+            display:flex;
             &.minim{
                 --note-height:calc(var(--bar-height) * 3.6);
                 height:var(--note-height);/*note takes up the whole line space at this size, so proportionality is 72.22% height is tail and 27.77% is note*/
                 position:relative;
+                justify-content: center;
                 
                 .minim{
                     position:relative;
@@ -107,41 +111,67 @@
                         filter: brightness(0) saturate(100%) invert(24%) sepia(95%) saturate(5655%) hue-rotate(354deg) brightness(93%) contrast(121%);
                     }
                 }
-                div{
-                    position:absolute;
-                    height:calc(var(--bar-height)/2);
-                    width:calc(var(--bar-height) * 1.8);
-                    left:calc(var(--bar-height) * 0.9);
-                    &.bottom-0{
-                        bottom:calc(var(--bar-height) * 1);
-                    }
-                    &.bottom-1{
-                        bottom:0px;
-                    }
-                    &.bottom-2{
-                        bottom:calc(var(--bar-height) * -1);
-                    }
-                    &.bottom-3{
-                        bottom:calc(var(--bar-height) * -2);
-                    }
-                    &.bottom-4{
-                        bottom:calc(var(--bar-height) * -3);
+                &.octave-4{
+                    div{
+                        position:absolute;
+                        height:calc(var(--bar-height)/2);
+                        width:calc(var(--bar-height) * 1.8);
+                        &.ledger-line-0{
+                            bottom:calc(var(--bar-height) * 4);
+                        }
+                        &.ledger-line-1{
+                            bottom:calc(var(--bar-height) * 3);
+                        }
+                        &.ledger-line-2{
+                            bottom:calc(var(--bar-height) * 2);
+                        }
+                        &.ledger-line-3{
+                            bottom:calc(var(--bar-height) * 1);
+                        }
+                        &.ledger-line-4{
+                            bottom:0px;
+                        }
                     }
                 }
                 &.octave-5{
+                    div{
+                        position:absolute;
+                        height:calc(var(--bar-height)/2);
+                        width:calc(var(--bar-height) * 1.8);
+                        &.ledger-line-0{
+                            top:calc(var(--bar-height) * 4);
+                        }
+                        &.ledger-line-1{
+                            top:calc(var(--bar-height) * 3);
+                        }
+                        &.ledger-line-2{
+                            top:calc(var(--bar-height) * 2);
+                        }
+                        &.ledger-line-3{
+                            top:calc(var(--bar-height) * 1);
+                        }
+                        &.ledger-line-4{
+                            top:0px;
+                        }
+                    }
+                }
+                .octave-5{
                     transform:rotate(180deg);
                 }
                 /*padding-top - bar-height*2.6 will put the note in the high E (top space). Add another bar-height/2 for each additional note.*/
-                &.b.octave-5{
+                &.octave-5{
                     top:calc((var(--bar-height) * -2));
-                    .bottom-0{
-                        border-bottom:1px solid black;
+                }
+                /*&.b.octave-5{
+                    top:calc((var(--bar-height) * -2));
+                    .ledger-line-3{
+                        border-top:1px solid black;
                     }
                 }
                 &.a.octave-5{
                     top:calc((var(--bar-height) * -1.5));
-                    .bottom-1{
-                        border-top:1px solid black;
+                    .ledger-line-4{
+                        border-bottom:1px solid black;
                     }
                 }       
                 &.g.octave-5{
@@ -158,7 +188,7 @@
                 }
                 &.c.octave-5{
                     top:calc((var(--bar-height) * 1));
-                }   
+                }*/   
                 /*padding-top - bar-height*2.6 will put the note in the high E (top space). Add another bar-height/2 for each additional note.*/
                 &.b.octave-4{
                     bottom:calc(var(--note-height) - var(--bar-height) * 2.5);
@@ -180,7 +210,7 @@
                 }
                 &.c.octave-4{
                     bottom:calc(var(--note-height) - var(--bar-height) * 5.5);
-                    .bottom-1{
+                    .ledger-line-4{
                         border-top:1px solid black;
                     }
                 }    
