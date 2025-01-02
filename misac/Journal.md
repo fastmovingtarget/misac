@@ -111,8 +111,17 @@ And now it works and nothing else could possibly go wrong...
 
 Next Step: Add an option to map the keybinds
 
-## Day 14 - 30/12/2024 - Mapping Keybinds
+## Day 14 - 31/12/2024 - Mapping Keybinds
 
 Mapping keybinds was always going to be slightly awkward with how I implemented the keybinds - with the key(haha) as the key and the note as the value within an object. I chose to do this to make the listener more intuitive, but it meant that I'd struggle to implement the actual user mapping in an intuitive way. I ended up doing it via some quite convoluted methods (see code for more details I guess) but it actually worked out quite well. I also moved the "optionsActive" state up to misacPage so that I could disable the music key event listeners when the options were active - I'd encountered an issue where the key binds would override the options' number of notes number input.
 
 Next Step: Look at styling for mobile. Fun Fun!
+
+## Day 15 - 02/12/2025 - Styling Part 1
+
+I've never counted styling as one of my strong points, so any improvement is a win...
+Stage 1 was actually accomplished on the 31st, to check for screen size and scale the stave according to the width of the screen.
+Stage 2 was to change the notes to adjust their gap flexibly (without altering the scale) when the screen increased and decreased size.
+Stage 3 involved figuring out exactly what I'd broken in stage to to make it so that the style for the location of the notes on the stave weren't registering but only for octave 5, and only in the github pages deployed page. Turns out that deployment and only that deployment didn't like extraeneous brackets inside the calc, which was weird but I found it eventually.
+
+Next Step: Continue CSS polishing for mobile and desktop both.
