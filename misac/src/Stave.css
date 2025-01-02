@@ -159,36 +159,36 @@
                     transform:rotate(180deg);
                 }
                 /*padding-top - bar-height*2.6 will put the note in the high E (top space). Add another bar-height/2 for each additional note.*/
-                &.octave-5{
-                    bottom:calc(var(--note-height) - var(--bar-height) * 2.5);
-                }
-                /*&.b.octave-5{
-                    top:calc((var(--bar-height) * -2));
+                /*&.octave-5{
+                    top:calc(var(--note-height) - var(--bar-height) * 2.5);
+                }*/
+                &.b.octave-5{
+                    top:calc(var(--bar-height) * -2);
                     .ledger-line-3{
                         border-top:1px solid black;
                     }
                 }
                 &.a.octave-5{
-                    top:calc((var(--bar-height) * -1.5));
+                    top:calc(var(--bar-height) * -1.5);
                     .ledger-line-4{
                         border-bottom:1px solid black;
                     }
                 }       
                 &.g.octave-5{
-                    top:calc((var(--bar-height) * -1));
+                    top:calc(var(--bar-height) * -1);
                 }      
                 &.f.octave-5{
-                    top:calc((var(--bar-height) * -0.5));
+                    top:calc(var(--bar-height) * -0.5);
                 }
                 &.e.octave-5{
-                    top:calc((var(--bar-height) * 0));
+                    top:calc(var(--bar-height) * 0);
                 }
                 &.d.octave-5{
-                    top:calc((var(--bar-height) * 0.5));
+                    top:calc(var(--bar-height) * 0.5);
                 }
                 &.c.octave-5{
-                    top:calc((var(--bar-height) * 1));
-                }*/   
+                    top:calc(var(--bar-height) * 1);
+                }   
                 /*padding-top - bar-height*2.6 will put the note in the high E (top space). Add another bar-height/2 for each additional note.*/
                 &.b.octave-4{
                     bottom:calc(var(--note-height) - var(--bar-height) * 2.5);
