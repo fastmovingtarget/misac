@@ -12,17 +12,15 @@
 }
 
 .sheet-container{
-    --padding-top:210px;
-    height:50vh;
+    padding-top:10vh;
+    height:30vh;
     width:100vw;
     overflow-x: hidden;
     overflow-y: hidden;
+    position:relative;
     .stave-container{
         display:flex;
         flex-direction:column;
-        padding-top:var(--padding-top);
-        padding-bottom:70px;
-        height:calc(100% - 140px);
         overflow:hidden;
         .space{
             height:calc(var(--bar-height) - 1px);
@@ -33,9 +31,9 @@
         }
     }
     .notes-container{
-        position:absolute;
+        position:relative;
+        top:calc(var(--bar-height) * -4);
         width:100%;
-        top:var(--padding-top);   
         height:calc(var(--bar-height) * 4);
         .trebleclef{
             height:calc(var(--bar-height) * 6);/*Bars height 120px, overflow of 60px total*/

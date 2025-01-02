@@ -75,11 +75,11 @@ function MisacPage() {
 
 
   return (
-    <div className="misac-container" onKeyDown={keyPressHandler} onKeyUp={keyUpHandler} tabIndex={0}>
-      <div>
+    <div className="misac-container column" onKeyDown={keyPressHandler} onKeyUp={keyUpHandler} tabIndex={0}>
+      <div className="top-bar-container row">
         <Score score={score} setScore={setScore}/>
+        <Options optionsActive={optionsActive} setOptionsActive={setOptionsActive}/>
       </div>
-      <Options optionsActive={optionsActive} setOptionsActive={setOptionsActive}/>
       <Stave/>
         <div className="keyboard-container">
           {
