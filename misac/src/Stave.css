@@ -1,13 +1,32 @@
-
-@media screen and (min-width: 450px) and (max-width:1650px) {
+@media screen and (width < 530px), screen and (height < 210px){
     .sheet-container{
-        --bar-height:20px;
+        --bar-height:5px;
+        overflow-x:scroll;
+        overflow-y:scroll;
+        >*{
+            min-width:280px;
+        }
     }
 }
 
-@media screen and (min-width: 1651px){
+@media screen and (530px <= width < 1000px) and (height >= 210px), screen and (210px <= height < 630px) and (width > 530px){
+    .sheet-container{
+        --bar-height:10px;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (1000px <= width < 1650px) and (height >= 420px), screen and (420px <= height < 630px) and (width > 1000px) {
+    .sheet-container{
+        --bar-height:20px;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (width >= 1650px) and (height >= 630px){
     .sheet-container{
         --bar-height:30px;
+        overflow-x: hidden;
     }
 }
 
@@ -15,7 +34,6 @@
     padding-top:10vh;
     height:30vh;
     width:100vw;
-    overflow-x: hidden;
     overflow-y: hidden;
     position:relative;
     .stave-container{
@@ -51,9 +69,9 @@
                 margin:0px;
                 font-weight:bold;
                 font-size:calc(var(--bar-height) * 2);
-                line-height:60px;
+                line-height:calc(var(--bar-height) * 2);
                 &.♭{
-                    letter-spacing:-5px;
+                    letter-spacing:calc(var(--bar-height) / -6);
                 }
                 &:hover{
                     cursor:default;

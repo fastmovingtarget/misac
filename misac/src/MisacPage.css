@@ -1,3 +1,31 @@
+@media screen and (width < 530px), screen and (height < 210px){
+    .score{
+        font-size: 15px;
+        margin:1px;
+    }
+}
+
+@media screen and (530px <= width < 1000px) and (height >= 210px), screen and (210px <= height < 630px) and (width > 530px){
+    .score{
+        font-size: 20px;
+        margin:2px;
+    }
+}
+
+@media screen and (1000px <= width < 1650px) and (height >= 420px), screen and (420px <= height < 630px) and (width > 1000px) {
+    .score{
+        font-size: 25px;
+        margin:3px;
+    }
+}
+
+@media screen and (width >= 1650px) and (height >= 630px){
+    .score{
+        font-size: 28px;
+        margin:4px;
+    }
+}
+
 .misac-container{
     width:100vw;
     height:100vh;

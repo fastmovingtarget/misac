@@ -20,7 +20,10 @@ function Score({score, setScore}){
     })
 
     return (
-        <h2 className="score">Score : {score} High Score: {highScore}</h2>
+        <div className="score-text-container row">
+            <h2 className="score">Score : {score}</h2>
+            <h2 className="score">High Score: {highScore}</h2>
+        </div>
     )
 }
 

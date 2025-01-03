@@ -81,13 +81,13 @@ function MisacPage() {
         <Options optionsActive={optionsActive} setOptionsActive={setOptionsActive}/>
       </div>
       <Stave/>
-        <div className="keyboard-container">
-          {
-            JSON.parse(octaves).map((octave) => 
-              <Piano key={"octave-key" + octave} notePressHandler={notePressHandler} octaveNumber={octave} currentPressedNote={currentPressedNote?.octaveNumber === octave ? currentPressedNote.pianoKey : null} setCurrentPressedNote={setCurrentPressedNote}/>
-            )
-          }
-        </div>
+      <div className="keyboard-container">
+        {
+          JSON.parse(octaves).map((octave) => 
+            <Piano key={"octave-key" + octave} notePressHandler={notePressHandler} octaveNumber={octave} currentPressedNote={currentPressedNote?.octaveNumber === octave ? currentPressedNote.pianoKey : null} setCurrentPressedNote={setCurrentPressedNote}/>
+          )
+        }
+      </div>
     </div>
   );
 }
