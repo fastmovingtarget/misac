@@ -125,3 +125,9 @@ Stage 2 was to change the notes to adjust their gap flexibly (without altering t
 Stage 3 involved figuring out exactly what I'd broken in stage to to make it so that the style for the location of the notes on the stave weren't registering but only for octave 5, and only in the github pages deployed page. Turns out that deployment and only that deployment didn't like extraeneous brackets inside the calc, which was weird but I found it eventually.
 
 Next Step: Continue CSS polishing for mobile and desktop both.
+
+## Day 16 - 03/12/2025 - Styling for mobile part 2
+
+I've now added in media rules for a variety of screen sizes for the stave/notes and the score (and overflow for anything below the smallest screen). Going into depth on media rules and checking I'd fully accounted for all the potential cases was time-consuming but quite satisfying. I also fixed a bug where the options were invisible when collapsed but still interactable, by using the "inert" property. I also realised I'd been handling the octave gap in my notes incorrectly - I'd thought the octaves would split at g<->a rather than b<->c (so b is the last note in the octave rather than g).  With that, I'm done or near-done with my initial pass of the app.
+
+Next Step: Work on something else for a little bit, then use this code base to create a mobile app in React Native!
