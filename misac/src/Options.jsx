@@ -34,54 +34,56 @@ function Options({optionsActive, setOptionsActive}){
     return(
         <div className={"options-container" + (optionsActive ? " expanded" : " collapsed")}>
             <img src={optionsImg} className="options-image" alt="options" onClick={() => setOptionsActive(!optionsActive)}/>
-            <label className="select-key options-item">Key Signature:
-                <select name="key" id="select-key" className="select-key" onInput={handleInput} defaultValue={key}>
-                    {Object.keys(keys).map((key, index) => 
-                        <option className="select-key-option" key={key + index} value={key} >{key.toLocaleUpperCase() + "\u00A0".repeat(4 - key.length) + "| " + keys[key][7]}</option>
-                    )}
-                </select>
-            </label>
-            <label className="select-volume options-item">Volume:
-                <input type="range" name="volume" min="0" max="1" step="0.01" onInput={handleInput}/>
-                {volume}
-            </label>
-            <label className="select-num-notes options-item">Number of Notes: 
-                <input type="number" name="numNotes" min="1" max="12" value={numNotes} onInput={handleInput}/>
-            </label>
-            <label className="select-octave options-item">Octave: 
-                <select name="octaves" id="select-octaves" className="select-octaves" onInput={handleInput} defaultValue={octaves}>
-                        <option className="select-octaves-option" value={"[4]"} >4 - middle</option>
-                        <option className="select-octaves-option" value={"[4, 5]"} >4 - middle, 5</option>
-                </select>
-            </label>
-            <label className = "options-item">Keybinds: 
-                <div className="column keybinds-container">
-                    {
-                        bindNotes.map((octaveBindArray) => {
-                            return (
-                                <div className="row keybind-octave-container"> 
-                                    {
-                                        octaveBindArray.map((note, index) => {
-                                            return (
-                                                <label key={"keybind-" + index}className={"column keybind-label" + (note.includes("\u266f") || note.includes("\u266d") ? " black" : " white") }>{note}
-                                                    <input 
-                                                        type="text" 
-                                                        name={note}
-                                                        value={Object.keys(keyBinds).find(key => (keyBinds[key].note + keyBinds[key].octave) === octaveSharp[index] + note.charAt(note.length - 1)) ?? ""} 
-                                                        onKeyUp={keybindInputHandler}
-                                                        onKeyDown={e => e.preventDefault()}
-                                                        readOnly
-                                                    />
-                                                </label>
-                                            )
-                                        })
-                                    }
-                                </div>
-                            )
-                        })
-                    }
-                </div>
-            </label>
+            <div className="column" inert={!optionsActive}>
+                <label className="select-key options-item">Key Signature:
+                    <select name="key" id="select-key" className="select-key" onInput={handleInput} defaultValue={key}>
+                        {Object.keys(keys).map((key, index) => 
+                            <option className="select-key-option" key={key + index} value={key} >{key.toLocaleUpperCase() + "\u00A0".repeat(4 - key.length) + "| " + keys[key][7]}</option>
+                        )}
+                    </select>
+                </label>
+                <label className="select-volume options-item">Volume:
+                    <input type="range" name="volume" min="0" max="1" step="0.01" onInput={handleInput}/>
+                    {volume}
+                </label>
+                <label className="select-num-notes options-item">Number of Notes: 
+                    <input type="number" name="numNotes" min="1" max="12" value={numNotes} onInput={handleInput}/>
+                </label>
+                <label className="select-octave options-item">Octave: 
+                    <select name="octaves" id="select-octaves" className="select-octaves" onInput={handleInput} defaultValue={octaves}>
+                            <option className="select-octaves-option" value={"[4]"} >4 - middle</option>
+                            <option className="select-octaves-option" value={"[4, 5]"} >4 - middle, 5</option>
+                    </select>
+                </label>
+                <label className = "options-item keybinds">Keybinds: 
+                    <div className="column keybinds-container">
+                        {
+                            bindNotes.map((octaveBindArray) => {
+                                return (
+                                    <div className="row keybind-octave-container"> 
+                                        {
+                                            octaveBindArray.map((note, index) => {
+                                                return (
+                                                    <label key={"keybind-" + index}className={"column keybind-label" + (note.includes("\u266f") || note.includes("\u266d") ? " black" : " white") }>{note}
+                                                        <input 
+                                                            type="text" 
+                                                            name={note}
+                                                            value={Object.keys(keyBinds).find(key => (keyBinds[key].note + keyBinds[key].octave) === octaveSharp[index] + note.charAt(note.length - 1)) ?? ""} 
+                                                            onKeyUp={keybindInputHandler}
+                                                            onKeyDown={e => e.preventDefault()}
+                                                            readOnly
+                                                        />
+                                                    </label>
+                                                )
+                                            })
+                                        }
+                                    </div>
+                                )
+                            })
+                        }
+                    </div>
+                </label>
+            </div>
         </div>
     )
 }
