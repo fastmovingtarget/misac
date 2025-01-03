@@ -20,6 +20,7 @@ function MisacPage() {
   const {currentNoteSet, setCurrentNoteSet, keys, key, generateNewNoteSet, octaves, setHighScore, highScore, playHooks, keyBinds} = useOptions()
   
     const notePressHandler = (notePressed, octaveNumber) => {
+        console.log(notePressed + octaveNumber)
         playHooks[notePressed + octaveNumber]()
 
         const currentNoteSetIndex = currentNoteSet.findIndex((element) => element.state !== "successful");//find the index of the current incorrect or unused note in the current note set
