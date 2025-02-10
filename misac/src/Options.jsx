@@ -64,7 +64,7 @@ function Options({optionsActive, setOptionsActive}){
                                         {
                                             octaveBindArray.map((note, index) => {
                                                 return (
-                                                    <label key={"keybind-" + index}className={"column keybind-label" + (note.includes("\u266f") || note.includes("\u266d") ? " black" : " white") }>{note}
+                                                    <label key={"keybind-" + index}className={"column keybind-label" + (note.includes("\u266f") || note.includes("\u266d") ? " black" : " white") }><span>{note}</span>
                                                         <input 
                                                             type="text" 
                                                             name={note}
